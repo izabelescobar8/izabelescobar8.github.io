@@ -1,0 +1,153 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.5;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: -0.025em;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.search-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+#district-search {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.125rem;
+    border: 2px solid var(--border-color);
+    border-radius: 1rem;
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+#district-search:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.search-results {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-bg);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.search-results.hidden {
+    display: none;
+}
+
+.search-item {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-item:last-child {
+    border-bottom: none;
+}
+
+.search-item:hover {
+    background-color: #f1f5f9;
+}
+
+.result-container {
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.result-container.hidden {
+    display: none;
+}
+
+#district-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.875rem;
+    }
+    
+    .chart-wrapper {
+        height: 300px;
+    }
+}
