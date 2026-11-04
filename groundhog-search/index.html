@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groundhog Day Predictors: Search the Track Records</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Everything lives inside #gh-app so it can be pasted/framed into a CMS without leaking styles. -->
+    <div id="gh-app">
+        <header class="gh-header">
+            <h1>Who predicted what on Groundhog Day?</h1>
+            <p class="gh-sub">Search <span id="gh-total-predictors">93</span> prognosticators, from groundhogs to armadillos to a largemouth bass, and see how their calls have gone since 1990.</p>
+        </header>
+
+        <form class="gh-controls" role="search" onsubmit="return false">
+            <div class="gh-field gh-field-wide">
+                <label for="gh-q">Name or town</label>
+                <input id="gh-q" type="search" placeholder="Try &ldquo;Phil&rdquo; or &ldquo;Punxsutawney&rdquo;" autocomplete="off">
+            </div>
+            <div class="gh-field">
+                <label for="gh-region">State / province</label>
+                <select id="gh-region"><option value="">All</option></select>
+            </div>
+            <div class="gh-field">
+                <label for="gh-type">Type of creature</label>
+                <select id="gh-type"><option value="">All</option></select>
+            </div>
+            <div class="gh-field">
+                <label for="gh-sort">Sort by</label>
+                <select id="gh-sort">
+                    <option value="name">Name (A&ndash;Z)</option>
+                    <option value="count">Most predictions</option>
+                    <option value="shadow">Most shadows seen</option>
+                    <option value="match">Most in line with consensus</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="gh-status-row">
+            <p id="gh-count" class="gh-count" aria-live="polite">Loading&hellip;</p>
+            <button id="gh-reset" class="gh-reset" type="button" hidden>Clear filters</button>
+        </div>
+
+        <ul class="gh-legend" aria-label="Legend">
+            <li><span class="gh-sw gh-shadow"></span>Saw shadow (6 more weeks of winter)</li>
+            <li><span class="gh-sw gh-noshadow"></span>No shadow (early spring)</li>
+            <li><span class="gh-sw gh-na"></span>No call on record</li>
+        </ul>
+
+        <div id="gh-results" class="gh-results"></div>
+        <button id="gh-more" class="gh-more" type="button" hidden>Show more</button>
+
+        <p class="gh-note">
+            <strong>About &ldquo;track record.&rdquo;</strong> The data records each predictor&rsquo;s call every year, not whether spring actually arrived early, so this shows each predictor&rsquo;s history and how often its call matched the <em>majority</em> call of all predictors that year. That is a measure of agreement, not weather accuracy.
+            Data: <a href="https://groundhog-day.com" target="_blank" rel="noopener">groundhog-day.com</a>, via
+            <a href="https://the-art-of-data-journalism.github.io/tutorial-data/groundhogs/predictions.csv" target="_blank" rel="noopener">The Art of Data Journalism</a>.
+        </p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
